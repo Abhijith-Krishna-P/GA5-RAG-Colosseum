@@ -114,7 +114,7 @@ Do not invent facts or use outside knowledge."""
             ]
         })
         answer = result["choices"][0]["message"]["content"].strip()
-        if answer.upper() == "ABSTAIN" or not answer:
+        if answer.strip().upper().rstrip(".!? ") == "ABSTAIN" or not answer:
             return {"answer": None, "sources": [], "scores": [], "confidence": 0.18}
 
         # Evidence support confidence is deliberately conservative and bounded.
