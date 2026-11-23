@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: ga5-rag-colosseum
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: AI_API_KEY
+        sync: false
+      - key: AI_BASE_URL
+        value: https://aipipe.org/openai/v1
+      - key: EMBEDDING_MODEL
+        value: text-embedding-3-small
+      - key: CHAT_MODEL
+        value: gpt-4o-mini
+      - key: KB_PATH
+        value: knowledge_base.json
